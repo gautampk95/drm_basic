@@ -78,6 +78,13 @@ rmse = np.sqrt(mean_squared_error(response_test, response_pred))
 print("The RMSE value:", rmse)
 ```
 
+## Contributing
+We welcome contributions to the `drm_basic` library!
 
+## Note
+As this is the initial version of the library with limited capabilities, please assess your needs and ensure its feasibility for your use case. Future updates will expand functionality and improve performance.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/gautampk95/drm_basic/blob/main/LICENSE.txt) file for details.
 
