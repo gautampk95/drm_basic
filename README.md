@@ -30,10 +30,52 @@ pip install drm_basic
 ```
 
 ## Usage
-To use the `drm_basic` library, first, you need to import it into your Python script. Here's how you can do that:
+To use the `drm_basic` library, you first need to import it into your Python script. Here's how you can do that:
 
 ```python
 import drm_basic
 ```
+To import the dose-response modeling methods, use the following:
+```python
+from drm_basic import drm_methods
+```
+To import available utility functions, use the following:
+```python
+from drm_basic import drm_utils
+```
+
+## Example 1: Using Methods from drm_methods and drm_utils
+Here’s a simple example of how to use a method from the drm_methods module:
+```python
+# Example data (arrays or dataframe columns)
+import numpy as np
+
+dose = np.array([0, 1, 2, 3, 4, 5])
+response = np.array([0, 10, 30, 50, 70, 90])
+
+# Fit a model using a method from drm_methods
+model = drm_methods.LL4(response, dose)
+
+# To check the summary of the model
+drm_utils.drm_summary(model)
+
+# If a test data:(dose_test, response_test) is available, the model is fitted as shown
+dose_test = np.array([1.1, 2.1, 5.1])
+response_test = np.array([11, 32, 92])
+response_pred = drm_utils.drm_predict(model, dose_test)
+
+# To get/view the fitted parameters
+params = model[0].x
+print("Fitted parameters for LL4 model:", params)
+```
+The performance of the model can be found:
+```python
+# RMSE is calculated
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+rmse = np.sqrt(mean_squared_error(response_test, response_pred))
+print("The RMSE value:", rmse)
+```
+
+
 
 
